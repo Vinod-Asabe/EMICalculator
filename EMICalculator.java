@@ -1,7 +1,7 @@
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
-public class EMICalculatorWithChart {
+public class EMICalculator {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -44,19 +44,21 @@ public class EMICalculatorWithChart {
         }
         System.out.println("-----------------------------------------------------------");
 
+        
+
+        double totalPrincipalCost = principal;
+        double totalInterestCost = totalInterest;
+        double totalPayableAmount = totalPrincipalCost + totalInterestCost;
+
+        System.out.println("\nCost of Total Principal Amount: " + df.format(totalPrincipalCost));
+        System.out.println("Cost of Total Interest: " + df.format(totalInterestCost));
+        System.out.println("Total Payable Amount: " + df.format(totalPayableAmount));
+
         double percentagePrincipal = (principal / (principal + totalInterest)) * 100;
         double percentageInterest = (totalInterest / (principal + totalInterest)) * 100;
 
         System.out.println("Percentage of Principal Loan Amount: " + df.format(percentagePrincipal) + "%");
         System.out.println("Percentage of Total Interest Paid: " + df.format(percentageInterest) + "%");
-
-
-        double totalPrincipalCost = principal;
-        double totalInterestCost = totalInterest;
-
-        System.out.println("\nCost of Total Principal Amount: " + df.format(totalPrincipalCost));
-        System.out.println("Cost of Total Interest: " + df.format(totalInterestCost));
-
 
 
         input.close();

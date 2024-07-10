@@ -42,13 +42,24 @@
             background-color: #45a049;
         }
     </style>
+    <script>
+        function validateInput(inputElement) {
+            var pattern = /^\d*\.?\d*$/; // Regular expression to match decimal numbers
+            if (!pattern.test(inputElement.value)) {
+                inputElement.setCustomValidity('Please enter a valid number');
+            } else {
+                inputElement.setCustomValidity('');
+            }
+        }
+    </script>
 </head>
 <body>
     <h2>EMI Calculator</h2>
     <form action="calculate_emi.php" method="post">
-        Loan Amount: <input type="text" name="loan_amount"><br>
-        Annual Interest Rate (%): <input type="text" name="annual_interest_rate"><br>
-        Loan Term (in years): <input type="text" name="loan_term"><br>
+        Loan Amount: <input type="text" name="loan_amount" oninput="validateInput(this)" pattern="\d*\.?\d*" title="Please enter a valid number" required><br>
+        Annual Interest Rate (%): <input type="text" name="annual_interest_rate" oninput="validateInput(this)" pattern="\d*\.?\d*" title="Please enter a valid number" required><br>
+        Loan Term (in years): <input type="text" name="loan_years" oninput="validateInput(this)" pattern="\d*\.?\d*" title="Please enter a valid number" required><br>
+        Loan Term (in months): <input type="text" name="loan_months" oninput="validateInput(this)" pattern="\d*\.?\d*" title="Please enter a valid number" required><br>
         <input type="submit" value="Calculate EMI">
     </form>
 </body>
