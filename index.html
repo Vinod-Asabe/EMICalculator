@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EMI Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function validateInput(inputElement) {
+            var pattern = /^\d*\.?\d*$/; // Regular expression to match decimal numbers
+            if (!pattern.test(inputElement.value)) {
+                inputElement.setCustomValidity('Please enter a valid number');
+            } else {
+                inputElement.setCustomValidity('');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>EMI Calculator</h2>
+    <form action="calculate_emi.php" method="post">
+        Loan Amount: <input type="text" name="loan_amount" oninput="validateInput(this)" pattern="\d*\.?\d*" title="Please enter a valid number" required><br>
+        Annual Interest Rate (%): <input type="text" name="annual_interest_rate" oninput="validateInput(this)" pattern="\d*\.?\d*" title="Please enter a valid number" required><br>
+        Loan Term (in years): <input type="text" name="loan_years" oninput="validateInput(this)" pattern="\d*\.?\d*" title="Please enter a valid number" required><br>
+        Loan Term (in months): <input type="text" name="loan_months" oninput="validateInput(this)" pattern="\d*\.?\d*" title="Please enter a valid number" required><br>
+        <input type="submit" value="Calculate EMI">
+    </form>
+</body>
+</html>

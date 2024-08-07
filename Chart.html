@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pie Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            width: 400px;
+            height: 400px;
+        }
+        #chartData {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Pie Chart</h2>
+    <canvas id="myChart"></canvas>
+    <div id="chartData">
+        <h3>Calculated Values</h3>
+        <p id="totalPrincipal">Total Principal Amount: $10,000.00</p>
+        <p id="totalInterest">Total Interest Amount: $54.25</p>
+        <p id="percentagePrincipal">Percentage of Principal Amount: 99.85%</p>
+        <p id="percentageInterest">Percentage of Interest Amount: 0.15%</p>
+    </div>
+    <script>
+        var totalPrincipalAmount = 10000.00;  // Replace with the actual calculated value
+        var totalInterestAmount = 54.25;     // Replace with the actual calculated value
+
+        // Calculate the percentage
+        var totalPayableAmount = totalPrincipalAmount + totalInterestAmount;
+        var percentagePrincipal = (totalPrincipalAmount / totalPayableAmount) * 100;
+        var percentageInterest = (totalInterestAmount / totalPayableAmount) * 100;
+
+        // Update the displayed calculated values
+        document.getElementById('totalPrincipal').innerText = "Total Principal Amount: $" + totalPrincipalAmount.toFixed(2);
+        document.getElementById('totalInterest').innerText = "Total Interest Amount: $" + totalInterestAmount.toFixed(2);
+        document.getElementById('percentagePrincipal').innerText = "Percentage of Principal Amount: " + percentagePrincipal.toFixed(2) + "%";
+        document.getElementById('percentageInterest').innerText = "Percentage of Interest Amount: " + percentageInterest.toFixed(2) + "%";
+
+        // Create the pie chart
+        var data = {
+            labels: ['Total Principal Amount', 'Total Interest Amount'],
+            datasets: [{
+                data: [totalPrincipalAmount, totalInterestAmount],
+                backgroundColor: ['lightblue', 'lightgreen']
+            }]
+        };
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: data
+        });
+    </script>
+</body>
+</html>
