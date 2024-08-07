@@ -155,7 +155,7 @@
             </div>
         </div>
         <button class="btn btn-primary" onclick="window.print()">Print</button>
-        <button class="btn btn-secondary" id="pdfButton">Convert to PDF</button>
+        <!-- <button class="btn btn-secondary" id="pdfButton">Convert to PDF</button> -->
         <button class="btn btn-success" onclick="shareResult()">Share</button>
     </div>
 
